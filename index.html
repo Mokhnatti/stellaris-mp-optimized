@@ -487,8 +487,9 @@
     <li><a href="#step3">Сверка checksum (внутри игры)</a></li>
     <li><a href="#step4">Подготовка системы</a></li>
     <li><a href="#step5">В субботу — старт партии</a></li>
+    <li><a href="#cloud">🌩️ Для играющих с облака</a></li>
     <li><a href="#downloads">Скачать файлы</a></li>
-    <li><a href="#mods">Состав сборки (29 модов)</a></li>
+    <li><a href="#mods">Порядок загрузки 29 модов</a></li>
     <li><a href="#troubleshoot">Что делать если что-то не работает</a></li>
   </ol>
 </div>
@@ -820,6 +821,37 @@ autosave=4</pre>
 
   <div class="alert info">
     <strong>Lockstep правило:</strong> в Stellaris MP симуляция дублируется на каждом клиенте — самый слабый CPU задаёт скорость для всех. Хостит i7-9700K (предположительно слабейший). Если у тебя слабее — играй на низкой скорости в late-game.
+  </div>
+</div>
+
+<h2 id="cloud">🌩️ Для играющих с облака (GeForce NOW / Boosteroid и т.п.)</h2>
+
+<div class="step">
+  <p>В облачных сервисах <strong>моды подгружаются</strong> через Steam Workshop subscriptions, но <strong>порядок загрузки модов часто сбрасывается</strong> между сессиями (облако стартует с чистым state). Поэтому нужен особый подход.</p>
+
+  <div class="alert warn">
+    <strong>Главная проблема:</strong> файл <code>Opimizm.json</code> со скачивания может не работать в облаке (sandbox блочит File System). Решаем через <strong>буфер обмена</strong> — облачные сервисы поддерживают clipboard sync.
+  </div>
+
+  <h4>Способ A — через буфер обмена (рекомендую)</h4>
+  <ol>
+    <li>На <strong>своём</strong> ПК открой этот сайт → <a href="#step2">Шаг 2</a> → <strong>«Скопировать JSON в буфер»</strong></li>
+    <li>Открой <strong>облачную сессию</strong> Stellaris (GFN / Boosteroid)</li>
+    <li>Когда откроется <strong>Paradox Launcher</strong> — нажми <strong>«Игровые наборы» → ⋯ → Импорт</strong></li>
+    <li>В диалоге импорта вставить JSON напрямую (если кнопка «Paste» доступна) — или сначала открыть <strong>Notepad</strong> в облаке через альтернативную кнопку и вставить там, сохранить как <code>Opimizm.json</code></li>
+    <li>Импортировать через лаунчер</li>
+  </ol>
+
+  <h4>Способ B — ручная расстановка (запасной)</h4>
+  <p>Если буфер обмена не работает в облаке — <strong>каждую сессию придётся расставлять моды вручную</strong>. Бери <a href="#mods">таблицу порядка</a> и перетаскивай моды на нужные позиции (29 штук).</p>
+
+  <p>Это занимает ~5 минут. Делать <strong>каждый раз перед партией</strong> если облако не сохраняет state.</p>
+
+  <h4>Способ C — попроси клиента облака написать в Tech Support</h4>
+  <p>Многие облачные сервисы (например Boosteroid с Stellaris) поддерживают persistent storage для Documents. Если у тебя такой — запроси у поддержки путь к <code>Documents/Paradox Interactive/Stellaris/</code> и просто загрузи туда наш Opimizm.json через web-интерфейс.</p>
+
+  <div class="alert info">
+    <strong>Чтобы избежать OOS в субботу:</strong> протестируй облачную сессию <strong>заранее</strong> (за день до партии). Загрузи моды, расставь порядок, сверь checksum в главном меню Stellaris с <code>3e40</code>. Если всё совпадает — в субботу проблем не будет.
   </div>
 </div>
 
