@@ -318,17 +318,20 @@
     <span class="step-num">3</span>
     <h3>Сверить checksum</h3>
   </div>
-  <p>В правом нижнем углу Paradox Launcher должна быть строка типа:</p>
-  <pre>Версия: Cetus v4.3.5
-Checksum: 3e40</pre>
+  <div class="alert warn">
+    <strong>⚠️ Важно:</strong> checksum нужно смотреть <strong>ВНУТРИ ИГРЫ</strong> (главное меню Stellaris), а <strong>не в Paradox Launcher</strong>. В лаунчере неправильный checksum — он показывает другую сумму.
+  </div>
+  <p>Запусти Stellaris с активным Playset «Opimizm». В <strong>главном меню Stellaris</strong> внизу/снизу справа будет строка:</p>
+  <pre>Версия: Cetus v4.3.5 (3e40)</pre>
+  <p>Где <code>3e40</code> — наш текущий эталон.</p>
   <div class="alert info">
-    <strong>Важно:</strong> когда RegiZero обновит Ultimate Automation (а он делает hotfix почти каждый день) — checksum изменится у всех. <strong>В пятницу вечером сверим новый эталон</strong> в Discord.
+    <strong>Hotfix-ы модов:</strong> RegiZero обновляет Ultimate Automation почти каждый день. Когда он выпустит hotfix — checksum изменится у всех. <strong>В пятницу вечером сверим новый эталон</strong> в Discord.
   </div>
   <p>Если checksum <strong>не совпадает</strong>:</p>
   <ul>
     <li>Verify integrity Stellaris (Steam → Library → Stellaris → Properties → Local Files)</li>
     <li>Подождать пока Steam докачает Workshop subscriptions</li>
-    <li>Сверить порядок модов с Opimizm.json (29 штук)</li>
+    <li>Сверить состав модов с <a href="Opimizm.json">Opimizm.json</a> (должно быть ровно 29 модов)</li>
   </ul>
 </div>
 
@@ -371,13 +374,29 @@ Checksum: 3e40</pre>
 
 <div class="download-row">
   <a class="download-btn" href="Opimizm.json" download>
-    <div class="name">Opimizm.json</div>
+    <div class="name">📋 Opimizm.json</div>
     <div class="desc">Playset для импорта в Paradox Launcher (29 модов в правильном порядке)</div>
   </a>
   <a class="download-btn" href="HOST_GUIDE.md" download>
-    <div class="name">HOST_GUIDE.md</div>
+    <div class="name">📖 HOST_GUIDE.md</div>
     <div class="desc">Детальная инструкция для хоста (i7-9700K, 11 шагов)</div>
   </a>
+</div>
+
+<h3 style="margin-top:32px;font-size:18px;color:var(--text-dim);">Прямые ссылки (скопировать в чат)</h3>
+
+<div class="step" style="font-family:'Cascadia Code',Consolas,monospace;font-size:13px;">
+  <p style="margin-bottom:6px;color:var(--text-dim);">Сборка целиком:</p>
+  <pre id="link-site">https://mokhnatti.github.io/stellaris-mp-optimized/</pre>
+
+  <p style="margin:14px 0 6px;color:var(--text-dim);">Steam коллекция:</p>
+  <pre id="link-coll">https://steamcommunity.com/sharedfiles/filedetails/?id=3719769152</pre>
+
+  <p style="margin:14px 0 6px;color:var(--text-dim);">Opimizm.json (для скачивания):</p>
+  <pre id="link-json">https://mokhnatti.github.io/stellaris-mp-optimized/Opimizm.json</pre>
+
+  <p style="margin:14px 0 6px;color:var(--text-dim);">HOST_GUIDE.md:</p>
+  <pre id="link-guide">https://mokhnatti.github.io/stellaris-mp-optimized/HOST_GUIDE.md</pre>
 </div>
 
 <h2>Состав сборки</h2>
