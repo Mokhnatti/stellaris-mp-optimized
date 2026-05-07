@@ -379,6 +379,63 @@
     color: var(--text-dim);
   }
 
+  .order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+  .order-table th {
+    background: rgba(255, 216, 100, 0.1);
+    color: var(--accent);
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+  }
+  .order-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .order-table tr:last-child td { border-bottom: none; }
+  .order-table tr:hover { background: var(--bg-card-hover); }
+  .order-table .pos {
+    color: var(--accent);
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-weight: 700;
+    width: 40px;
+    text-align: center;
+  }
+  .order-table .name a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  .order-table .name a:hover {
+    color: var(--accent-2);
+    text-decoration: underline;
+  }
+  .order-table .tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .tag-perf { background: rgba(102, 136, 255, 0.15); color: var(--accent-2); }
+  .tag-game { background: rgba(92, 216, 126, 0.12); color: var(--green); }
+  .tag-ru   { background: rgba(255, 166, 87, 0.15); color: var(--orange); }
+  .tag-our  { background: rgba(255, 216, 100, 0.15); color: var(--accent); }
+  .order-table .sid {
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
   .toc {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -795,58 +852,70 @@ autosave=4</pre>
   <pre>https://mokhnatti.github.io/stellaris-mp-optimized/HOST_GUIDE.md</pre>
 </div>
 
-<h2 id="mods">Состав сборки (29 модов)</h2>
+<h2 id="mods">Порядок загрузки модов (29 шт)</h2>
+
+<div class="alert info">
+  <strong>Зачем порядок:</strong> Stellaris применяет правило <strong>LIOS</strong> (Last In Overrides Same) — последний загруженный мод переопределяет одноимённые файлы. Если порядок неправильный — patches не сработают, ограничения AI потеряются, может случиться OOS в MP.
+</div>
+
+<div class="alert warn">
+  <strong>Steam коллекция порядок НЕ задаёт.</strong> Subscribe to all только подписывает на моды, а порядок в Paradox Launcher всегда дефолтный (алфавитный) или из импортированного <code>Opimizm.json</code>. Поэтому <strong>обязательно</strong> делайте <a href="#step2">импорт JSON</a> через Шаг 2.
+</div>
+
+<table class="order-table">
+  <thead>
+    <tr>
+      <th class="pos">#</th>
+      <th>Мод</th>
+      <th>Тип</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="pos">0</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1995601384" target="_blank">~~Ariphaos Unofficial Patch (4.2)</a></td><td><span class="tag tag-perf">perf</span></td></tr>
+    <tr><td class="pos">1</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2868680633" target="_blank">~~Scripted Trigger Undercoat</a></td><td><span class="tag tag-perf">perf</span></td></tr>
+    <tr><td class="pos">2</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1712760331" target="_blank">~ StarNet AI</a></td><td><span class="tag tag-perf">perf</span></td></tr>
+    <tr><td class="pos">3</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2466607238" target="_blank">! Casako's Framework & Modmenu</a></td><td><span class="tag tag-perf">perf</span></td></tr>
+    <tr><td class="pos">4</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2475302050" target="_blank">! Better Performance & Utilities</a></td><td><span class="tag tag-perf">perf</span></td></tr>
+    <tr><td class="pos">5</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2184737698" target="_blank">AI Game Performance Optimisation 4.3</a></td><td><span class="tag tag-perf">perf</span></td></tr>
+    <tr><td class="pos">6</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3238485438" target="_blank">AI will not summon dimensional fleet</a></td><td><span class="tag tag-perf">perf</span></td></tr>
+    <tr><td class="pos">7</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3479537780" target="_blank">[4.3.x] Stellaris Stability Patch</a></td><td><span class="tag tag-perf">perf</span></td></tr>
+    <tr><td class="pos">8</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3489022357" target="_blank">Disable Empire Focus</a></td><td><span class="tag tag-perf">perf</span></td></tr>
+    <tr><td class="pos">9</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1623423360" target="_blank">UI Overhaul Dynamic</a></td><td><span class="tag tag-game">game</span></td></tr>
+    <tr><td class="pos">10</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2617446011" target="_blank">Suppress Anomaly Pop-ups</a></td><td><span class="tag tag-game">game</span></td></tr>
+    <tr><td class="pos">11</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2933806344" target="_blank">StopSpam</a></td><td><span class="tag tag-perf">perf</span></td></tr>
+    <tr><td class="pos">12</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3039370479" target="_blank">Precursor Selection</a></td><td><span class="tag tag-game">game</span></td></tr>
+    <tr><td class="pos">13</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3020891645" target="_blank">No Shipyard Juggernauts</a></td><td><span class="tag tag-game">game</span></td></tr>
+    <tr><td class="pos">14</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2296011997" target="_blank">Total Assimilation</a></td><td><span class="tag tag-game">game</span></td></tr>
+    <tr><td class="pos">15</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2250100617" target="_blank">Ultimate Automation 4.3</a></td><td><span class="tag tag-game">game</span></td></tr>
+    <tr><td class="pos">16</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1886769279" target="_blank">Starbase Strong</a></td><td><span class="tag tag-game">game</span></td></tr>
+    <tr><td class="pos">17</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2976454692" target="_blank">Gray with animated portrait</a></td><td><span class="tag tag-game">game</span></td></tr>
+    <tr><td class="pos">18</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2976527288" target="_blank">Tasty Maid: Portraits</a></td><td><span class="tag tag-game">game</span></td></tr>
+    <tr><td class="pos">19</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3482538734" target="_blank">Tasty Maid: Events</a></td><td><span class="tag tag-game">game</span></td></tr>
+    <tr><td class="pos">20</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3696204283" target="_blank">Spacefleet Tactica</a></td><td><span class="tag tag-game">game</span></td></tr>
+    <tr><td class="pos">21</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3717059342" target="_blank">SFT ADD-ON: Marine Frigates for AI</a></td><td><span class="tag tag-game">game</span></td></tr>
+    <tr><td class="pos">22</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3712101233" target="_blank">SFT ADD-ON: Specialist Frigates</a></td><td><span class="tag tag-game">game</span></td></tr>
+    <tr><td class="pos">23</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3719959908" target="_blank">zz_ Tasty Maid Static (no animation)</a></td><td><span class="tag tag-our">наш</span></td></tr>
+    <tr><td class="pos">24</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2978054302" target="_blank">Tasty Maid: Portraits (Русификатор)</a></td><td><span class="tag tag-ru">ru</span></td></tr>
+    <tr><td class="pos">25</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3012188598" target="_blank">Ariphaos Unofficial Patch RUS</a></td><td><span class="tag tag-ru">ru</span></td></tr>
+    <tr><td class="pos">26</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3600166832" target="_blank">Tasty Maid: Events ― Ru Localisation</a></td><td><span class="tag tag-ru">ru</span></td></tr>
+    <tr><td class="pos">27</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3719960181" target="_blank">zz_ Cetus MP Performance Patch</a></td><td><span class="tag tag-our">наш</span></td></tr>
+    <tr><td class="pos">28</td><td class="name"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3720509491" target="_blank">zz_ RU Pack - Synkarion Crew</a></td><td><span class="tag tag-our">наш</span></td></tr>
+  </tbody>
+</table>
 
 <details>
-  <summary>Performance стек (10 модов)</summary>
+  <summary>Логика порядка — почему именно так</summary>
   <ul>
-    <li><code>~~Ariphaos Unofficial Patch (4.2)</code> — багфиксы + perf-фиксы</li>
-    <li><code>~~Scripted Trigger Undercoat</code> — dependency для perf-моддинга</li>
-    <li><code>~ StarNet AI</code> — переписан AI economy/personalities (заменил мёртвый StarTech)</li>
-    <li><code>! Casako's Framework & Modmenu</code> — dependency BPU</li>
-    <li><code>! Better Performance & Utilities</code> — pop/fleet caps</li>
-    <li><code>AI Game Performance Optimisation 4.3</code> — habitat/sub-species/hyper-relay limits</li>
-    <li><code>AI will not summon dimensional fleet</code> — убирает Astral Planes spike</li>
-    <li><code>[4.3.x] Stellaris Stability Patch</code> — антидесинк</li>
-    <li><code>Disable Empire Focus</code> — фикс OOS бага</li>
-    <li><code>StopSpam</code> — убирает спам уведомлений</li>
-  </ul>
-</details>
-
-<details>
-  <summary>Геймплейные моды (13 модов от Synkarion)</summary>
-  <ul>
-    <li><code>UI Overhaul Dynamic</code></li>
-    <li><code>Suppress Anomaly Pop-ups</code></li>
-    <li><code>Precursor Selection</code></li>
-    <li><code>No Shipyard Juggernauts</code></li>
-    <li><code>Total Assimilation</code></li>
-    <li><code>Ultimate Automation 4.3</code></li>
-    <li><code>Starbase Strong</code></li>
-    <li><code>Gray with animated portrait</code></li>
-    <li><code>Tasty Maid: Portraits</code></li>
-    <li><code>Tasty Maid: Events</code></li>
-    <li><code>Spacefleet Tactica</code></li>
-    <li><code>SFT ADD-ON: Marine Frigates for AI</code></li>
-    <li><code>SFT ADD-ON: Specialist Frigates</code></li>
-  </ul>
-</details>
-
-<details>
-  <summary>Русификаторы (3 мода)</summary>
-  <ul>
-    <li><code>Tasty Maid: Portraits (Русификатор)</code></li>
-    <li><code>Ariphaos Unofficial Patch RUS</code></li>
-    <li><code>Tasty Maid: Events ― Ru Localisation</code></li>
-  </ul>
-</details>
-
-<details>
-  <summary>Наши собственные моды (3, написаны для этой сборки)</summary>
-  <ul>
-    <li><code>zz_ Cetus MP Performance Patch</code> — override SFT AI fraction (frigate-throttle), lategame growth cap, defines tweaks</li>
-    <li><code>zz_ Tasty Maid Static (no animation)</code> — frozen .anim файлы (95-99% сжатия), статичные портреты, убирает FPS-drop при leaders window</li>
-    <li><code>zz_ RU Pack - Synkarion Crew</code> — полный русский для Precursor Selection, English fallback для BPU/Casako/Ariphaos UP</li>
+    <li><strong>0-1: Багфиксы + Undercoat</strong> — фундаментальные правки vanilla, всё остальное должно строиться поверх</li>
+    <li><strong>2: StarNet AI</strong> — задаёт economy plans / personalities AI (мягкие weights)</li>
+    <li><strong>3-4: Casako Framework + BPU</strong> — фреймворк pop/fleet caps</li>
+    <li><strong>5: AIGPO</strong> — <strong>обязательно ниже StarNet</strong>, иначе жёсткие caps AIGPO потеряются</li>
+    <li><strong>6-8: Patches</strong> — фиксы DLC, OOS, Empire Focus</li>
+    <li><strong>9-22: Геймплейный контент</strong> — UI, события, корабли, портреты</li>
+    <li><strong>23: zz_ Tasty Maid Static</strong> — override анимаций после Tasty Maid (LIOS)</li>
+    <li><strong>24-26: Русификаторы</strong> — после оригинальных модов которые переводят</li>
+    <li><strong>27: zz_ Cetus MP Performance Patch</strong> — наш override SFT AI fraction после SFT</li>
+    <li><strong>28: zz_ RU Pack</strong> — самый последний, fallback English для непереведённых mod-меню</li>
   </ul>
 </details>
 
