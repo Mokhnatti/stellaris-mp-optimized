@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stellaris MP Optimized — Synkarion Crew</title>
+<style>
+  :root {
+    --bg-deep: #0a0e1a;
+    --bg-card: #131829;
+    --bg-card-hover: #1a2138;
+    --accent: #ffd864;
+    --accent-2: #6688ff;
+    --text: #e8eaf2;
+    --text-dim: #8a92a8;
+    --border: #2a3148;
+    --green: #5cd87e;
+    --red: #ff6b6b;
+    --orange: #ffa657;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: radial-gradient(ellipse at top, #1a1f3a 0%, var(--bg-deep) 70%);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, white, transparent),
+      radial-gradient(1px 1px at 60% 70%, white, transparent),
+      radial-gradient(1px 1px at 50% 50%, #88a, transparent),
+      radial-gradient(2px 2px at 80% 10%, white, transparent),
+      radial-gradient(1px 1px at 90% 60%, white, transparent),
+      radial-gradient(2px 2px at 33% 80%, #aaf, transparent);
+    background-size: 200% 200%;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  h1 {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 18px;
+  }
+  .badges {
+    margin-top: 20px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .badge.checksum {
+    background: rgba(255, 216, 100, 0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+  }
+
+  .cta {
+    display: block;
+    background: linear-gradient(135deg, var(--accent-2), #4466ee);
+    color: white;
+    text-align: center;
+    padding: 22px 32px;
+    border-radius: 16px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    margin: 40px 0;
+    box-shadow: 0 8px 32px rgba(102, 136, 255, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(102, 136, 255, 0.5);
+  }
+  .cta-sub {
+    display: block;
+    font-size: 14px;
+    opacity: 0.85;
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-size: 28px;
+    margin: 56px 0 20px;
+    border-left: 4px solid var(--accent);
+    padding-left: 14px;
+  }
+
+  .step {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .step:hover {
+    border-color: var(--accent-2);
+    background: var(--bg-card-hover);
+  }
+  .step-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .step-num {
+    background: var(--accent);
+    color: var(--bg-deep);
+    font-weight: 800;
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step h3 {
+    font-size: 20px;
+    color: var(--text);
+  }
+  .step p, .step ul {
+    color: var(--text-dim);
+    margin-top: 8px;
+  }
+  .step ul {
+    padding-left: 24px;
+  }
+  .step li {
+    margin: 4px 0;
+  }
+  .step a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .step a:hover {
+    text-decoration: underline;
+  }
+  code, pre {
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--accent);
+  }
+  pre {
+    padding: 14px 16px;
+    overflow-x: auto;
+    margin: 12px 0;
+    line-height: 1.5;
+    border: 1px solid var(--border);
+  }
+
+  .download-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 24px 0;
+  }
+  .download-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+    display: block;
+  }
+  .download-btn:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .download-btn .name {
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 4px;
+    font-size: 15px;
+  }
+  .download-btn .desc {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  details {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+  details[open] { background: var(--bg-card-hover); }
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--accent);
+    user-select: none;
+  }
+  details ul { margin-top: 14px; padding-left: 22px; color: var(--text-dim); }
+  details li { margin: 4px 0; }
+  details code { font-size: 12px; }
+
+  .alert {
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 16px 0;
+    border-left: 4px solid var(--orange);
+    background: rgba(255, 166, 87, 0.08);
+  }
+  .alert.warn {
+    border-color: var(--red);
+    background: rgba(255, 107, 107, 0.08);
+  }
+  .alert.info {
+    border-color: var(--accent-2);
+    background: rgba(102, 136, 255, 0.08);
+  }
+  .alert strong { color: var(--accent); }
+
+  footer {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Stellaris MP Optimized</h1>
+  <p class="subtitle">Synkarion Crew · приватная сборка для субботней партии</p>
+  <div class="badges">
+    <span class="badge">Stellaris 4.3 «Cetus»</span>
+    <span class="badge">29 модов</span>
+    <span class="badge checksum">checksum: 3e40</span>
+    <span class="badge">3 игрока · RU↔TH</span>
+  </div>
+</header>
+
+<a class="cta" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3719769152" target="_blank">
+  ПОДПИСАТЬСЯ НА КОЛЛЕКЦИЮ
+  <span class="cta-sub">→ Steam Workshop · одной кнопкой 29 модов</span>
+</a>
+
+<h2>Шаги для каждого игрока</h2>
+
+<div class="step">
+  <div class="step-header">
+    <span class="step-num">1</span>
+    <h3>Подписаться на коллекцию</h3>
+  </div>
+  <p>Перейти по <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3719769152" target="_blank">ссылке коллекции</a>, нажать <strong>«Подписаться на все»</strong>. Steam скачает 29 модов в фоне (~1.5 ГБ). Подождите завершения загрузки.</p>
+</div>
+
+<div class="step">
+  <div class="step-header">
+    <span class="step-num">2</span>
+    <h3>Импортировать Playset (порядок загрузки)</h3>
+  </div>
+  <p>Скачать <code>Opimizm.json</code> ниже, затем в Paradox Launcher:</p>
+  <ul>
+    <li><strong>Игровые наборы</strong> → <strong>⋯</strong> (три точки) → <strong>Импорт игрового набора</strong></li>
+    <li>Выбрать скачанный <code>Opimizm.json</code></li>
+    <li>Активировать набор «Opimizm»</li>
+  </ul>
+  <p>Все 29 модов автоматически встанут в правильном порядке.</p>
+</div>
+
+<div class="step">
+  <div class="step-header">
+    <span class="step-num">3</span>
+    <h3>Сверить checksum</h3>
+  </div>
+  <p>В правом нижнем углу Paradox Launcher должна быть строка типа:</p>
+  <pre>Версия: Cetus v4.3.5
+Checksum: 3e40</pre>
+  <div class="alert info">
+    <strong>Важно:</strong> когда RegiZero обновит Ultimate Automation (а он делает hotfix почти каждый день) — checksum изменится у всех. <strong>В пятницу вечером сверим новый эталон</strong> в Discord.
+  </div>
+  <p>Если checksum <strong>не совпадает</strong>:</p>
+  <ul>
+    <li>Verify integrity Stellaris (Steam → Library → Stellaris → Properties → Local Files)</li>
+    <li>Подождать пока Steam докачает Workshop subscriptions</li>
+    <li>Сверить порядок модов с Opimizm.json (29 штук)</li>
+  </ul>
+</div>
+
+<div class="step">
+  <div class="step-header">
+    <span class="step-num">4</span>
+    <h3>Подготовка системы (для всех)</h3>
+  </div>
+  <ul>
+    <li><strong>Discord overlay для Stellaris</strong> = OFF</li>
+    <li><strong>OneDrive</strong> не должен синкать <code>Documents\Paradox Interactive\</code></li>
+    <li><strong>Antivirus</strong> exclusion на Stellaris install + Documents\Paradox Interactive\Stellaris</li>
+    <li><strong>Windows Game Mode</strong> = OFF (для гибридных CPU как 12600KF особенно)</li>
+    <li><strong>NVIDIA Control Panel</strong> для Stellaris.exe: Power = Maximum Performance, Anti-Lag/Reflex = OFF</li>
+    <li><strong>Steam Region</strong> = Stockholm (для РФ) или Tokyo (для Тая)</li>
+  </ul>
+  <p>Подробный гайд для хоста (i7-9700K) — в файле <a href="HOST_GUIDE.md">HOST_GUIDE.md</a>.</p>
+</div>
+
+<div class="step">
+  <div class="step-header">
+    <span class="step-num">5</span>
+    <h3>В субботу — старт</h3>
+  </div>
+  <ul>
+    <li>За 30 мин до партии — все онлайн в Discord</li>
+    <li>Закрыть лишнее (браузер, OBS, тяжёлые программы)</li>
+    <li>Запустить Steam, дождаться обновлений Workshop</li>
+    <li>Сверить checksum в Discord — у всех 3 одинаковый</li>
+    <li>Хост (9700K) создаёт MP-лобби через Steam Friends</li>
+    <li>Speed 3-4 в late-game (после 2300), не 5</li>
+  </ul>
+  <div class="alert">
+    <strong>Lockstep правило:</strong> хостит самый слабый CPU (i7-9700K). Это контринтуитивно, но иначе клиент отстаёт и ловит OOS.
+  </div>
+</div>
+
+<h2>Скачать файлы</h2>
+
+<div class="download-row">
+  <a class="download-btn" href="Opimizm.json" download>
+    <div class="name">Opimizm.json</div>
+    <div class="desc">Playset для импорта в Paradox Launcher (29 модов в правильном порядке)</div>
+  </a>
+  <a class="download-btn" href="HOST_GUIDE.md" download>
+    <div class="name">HOST_GUIDE.md</div>
+    <div class="desc">Детальная инструкция для хоста (i7-9700K, 11 шагов)</div>
+  </a>
+</div>
+
+<h2>Состав сборки</h2>
+
+<details>
+  <summary>Performance стек (10 модов)</summary>
+  <ul>
+    <li><code>~~Ariphaos Unofficial Patch (4.2)</code> — багфиксы + perf-фиксы</li>
+    <li><code>~~Scripted Trigger Undercoat</code> — dependency для perf-моддинга</li>
+    <li><code>~ StarNet AI</code> — переписан AI economy/personalities (заменил мёртвый StarTech)</li>
+    <li><code>! Casako's Framework & Modmenu</code> — dependency BPU</li>
+    <li><code>! Better Performance & Utilities</code> — pop/fleet caps</li>
+    <li><code>AI Game Performance Optimisation 4.3</code> — habitat/sub-species/hyper-relay limits</li>
+    <li><code>AI will not summon dimensional fleet</code> — убирает Astral Planes spike</li>
+    <li><code>[4.3.x] Stellaris Stability Patch</code> — антидесинк</li>
+    <li><code>Disable Empire Focus</code> — фикс OOS бага</li>
+    <li><code>StopSpam</code> — убирает спам уведомлений</li>
+  </ul>
+</details>
+
+<details>
+  <summary>Геймплейные моды (13 модов от Synkarion)</summary>
+  <ul>
+    <li><code>UI Overhaul Dynamic</code></li>
+    <li><code>Suppress Anomaly Pop-ups</code></li>
+    <li><code>Precursor Selection</code></li>
+    <li><code>No Shipyard Juggernauts</code></li>
+    <li><code>Total Assimilation</code></li>
+    <li><code>Ultimate Automation 4.3</code></li>
+    <li><code>Starbase Strong</code></li>
+    <li><code>Gray with animated portrait</code></li>
+    <li><code>Tasty Maid: Portraits</code></li>
+    <li><code>Tasty Maid: Events</code></li>
+    <li><code>Spacefleet Tactica</code></li>
+    <li><code>SFT ADD-ON: Marine Frigates for AI</code></li>
+    <li><code>SFT ADD-ON: Specialist Frigates</code></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Русификаторы (3 мода)</summary>
+  <ul>
+    <li><code>Tasty Maid: Portraits (Русификатор)</code></li>
+    <li><code>Ariphaos Unofficial Patch RUS</code></li>
+    <li><code>Tasty Maid: Events ― Ru Localisation</code></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Наши собственные моды (3, написаны для этой сборки)</summary>
+  <ul>
+    <li><code>zz_ Cetus MP Performance Patch</code> — override SFT AI fraction (frigate-throttle), lategame growth cap, defines tweaks</li>
+    <li><code>zz_ Tasty Maid Static (no animation)</code> — frozen .anim файлы (95-99% сжатия), статичные портреты, убирает FPS-drop при leaders window</li>
+    <li><code>zz_ RU Pack - Synkarion Crew</code> — полный русский для Precursor Selection, English fallback для BPU/Casako/Ariphaos UP</li>
+  </ul>
+</details>
+
+<h2>Стресс-тест (на Ryzen 5800X3D)</h2>
+
+<div class="step">
+  <p>Эталонный замер на Huge 1000 stars / 16 AI / 4 FE / 3 Marauder + Khan / Crisis 5× / year 2469 (full late-late-game):</p>
+  <ul>
+    <li><strong>Daily tick avg:</strong> 117 ms (зелёная зона <150)</li>
+    <li><strong>one_year:</strong> 92.4 секунды</li>
+    <li><strong>FPS:</strong> ~250 (4ms frame)</li>
+    <li><strong>Errors:</strong> 150 строк за всю сессию (vanilla DLC bugs, наши моды чисты)</li>
+  </ul>
+  <p>На i7-9700K хосте ожидается +30-50% к этим числам — всё ещё играбельно до 2400.</p>
+</div>
+
+<h2>Помощь и обратная связь</h2>
+
+<div class="step">
+  <p>Если что-то не работает — пишите в Discord партии. Эталонный сейв и логи стресс-теста сохранены, можно сравнивать перформанс.</p>
+  <p>Подробный гайд для хоста: <a href="HOST_GUIDE.md">HOST_GUIDE.md</a></p>
+</div>
+
+<footer>
+  Собрано в течение 03–06 мая 2026 ·
+  <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3719769152" target="_blank">Steam коллекция</a> ·
+  <a href="https://github.com/Mokhnatti" target="_blank">github.com/Mokhnatti</a>
+</footer>
+
+</div>
+</body>
+</html>
