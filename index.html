@@ -311,6 +311,74 @@
     margin: 0 2px;
   }
 
+  .copy-section {
+    background: linear-gradient(135deg, rgba(255, 216, 100, 0.08), rgba(102, 136, 255, 0.08));
+    border: 2px solid var(--accent);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 28px 0;
+  }
+  .copy-section h3 {
+    color: var(--accent);
+    font-size: 20px;
+    margin: 0 0 8px;
+  }
+  .copy-section p {
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+  .json-preview {
+    background: #06091a;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 220px;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.4;
+    margin-bottom: 18px;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .copy-btn {
+    display: block;
+    width: 100%;
+    padding: 28px 32px;
+    font-size: 22px;
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(135deg, var(--accent), #ff9a00);
+    color: var(--bg-deep);
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(255, 216, 100, 0.3);
+    transition: transform 0.15s, box-shadow 0.15s, background 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: inherit;
+  }
+  .copy-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(255, 216, 100, 0.5);
+  }
+  .copy-btn:active {
+    transform: translateY(0);
+  }
+  .copy-btn.copied {
+    background: linear-gradient(135deg, var(--green), #2da840);
+    color: white;
+  }
+  .copy-hint {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
   .toc {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -424,6 +492,36 @@
       ⬇ Скачать Opimizm.json
     </a>
   </p>
+
+  <div class="copy-section">
+    <h3>Или скопировать JSON в буфер обмена</h3>
+    <p>Если не удаётся скачать файл — можно создать <code>Opimizm.json</code> вручную. Скопируй содержимое ниже и сохрани в текстовом редакторе как <code>Opimizm.json</code>.</p>
+
+    <div class="json-preview" id="json-content">{"game":"stellaris","name":"Opimizm","mods":[{"displayName":"~~Ariphaos Unofficial Patch (4.2)","enabled":true,"position":0,"steamId":"1995601384"},{"displayName":"~~Scripted Trigger Undercoat","enabled":true,"position":1,"steamId":"2868680633"},{"displayName":"~ StarNet AI","enabled":true,"position":2,"steamId":"1712760331"},{"displayName":"! Casako's Framework & Modmenu","enabled":true,"position":3,"steamId":"2466607238"},{"displayName":"! Better Performance & Utilities","enabled":true,"position":4,"steamId":"2475302050"},{"displayName":"AI Game Performance Optimisation 4.3","enabled":true,"position":5,"steamId":"2184737698"},{"displayName":"AI will not summon dimensional fleet","enabled":true,"position":6,"steamId":"3238485438"},{"displayName":"[4.3.x] Stellaris Stability Patch","enabled":true,"position":7,"steamId":"3479537780"},{"displayName":"Disable Empire Focus","enabled":true,"position":8,"steamId":"3489022357"},{"displayName":"UI Overhaul Dynamic","enabled":true,"position":9,"steamId":"1623423360"},{"displayName":"Suppress Anomaly Pop-ups","enabled":true,"position":10,"steamId":"2617446011"},{"displayName":"StopSpam","enabled":true,"position":11,"steamId":"2933806344"},{"displayName":"Precursor Selection","enabled":true,"position":12,"steamId":"3039370479"},{"displayName":"No Shipyard Juggernauts","enabled":true,"position":13,"steamId":"3020891645"},{"displayName":"Total Assimilation","enabled":true,"position":14,"steamId":"2296011997"},{"displayName":"Ultimate Automation 4.3","enabled":true,"position":15,"steamId":"2250100617"},{"displayName":"Starbase Strong","enabled":true,"position":16,"steamId":"1886769279"},{"displayName":"Gray  with animated portrait","enabled":true,"position":17,"steamId":"2976454692"},{"displayName":"Tasty Maid: Portraits 美味女仆：肖像","enabled":true,"position":18,"steamId":"2976527288"},{"displayName":"Tasty Maid: Events 美味女仆：内容","enabled":true,"position":19,"steamId":"3482538734"},{"displayName":"Spacefleet Tactica","enabled":true,"position":20,"steamId":"3696204283"},{"displayName":"SFT ADD-ON : Marine Frigates for all AI Empires","enabled":true,"position":21,"steamId":"3717059342"},{"displayName":"SFT ADD-ON : Specialist Frigates","enabled":true,"position":22,"steamId":"3712101233"},{"displayName":"zz_ Tasty Maid Static (no animation)","enabled":true,"position":23,"steamId":"3719959908"},{"displayName":"Tasty Maid: Portraits (Русификатор)","enabled":true,"position":24,"steamId":"2978054302"},{"displayName":"Ariphaos Unofficial Patch RUS","enabled":true,"position":25,"steamId":"3012188598"},{"displayName":"Tasty Maid: Events ― Ru Localisation","enabled":true,"position":26,"steamId":"3600166832"},{"displayName":"zz_ Cetus MP Performance Patch","enabled":true,"position":27,"steamId":"3719960181"},{"displayName":"zz_ RU Pack - Synkarion Crew","enabled":true,"position":28,"steamId":"3720509491"}]}</div>
+
+    <button class="copy-btn" id="copy-btn" onclick="copyJson()">📋 Скопировать JSON в буфер</button>
+    <p class="copy-hint">После копирования — открой Блокнот → Ctrl+V → Сохранить как <code>Opimizm.json</code> (выбрать кодировку UTF-8)</p>
+  </div>
+
+  <script>
+  function copyJson() {
+    const text = document.getElementById('json-content').textContent;
+    const btn = document.getElementById('copy-btn');
+    navigator.clipboard.writeText(text).then(() => {
+      btn.classList.add('copied');
+      btn.textContent = '✓ СКОПИРОВАНО! Можешь вставлять';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.textContent = '📋 Скопировать JSON в буфер';
+      }, 2500);
+    }).catch(err => {
+      btn.textContent = '⚠ Не удалось — скопируй вручную';
+      setTimeout(() => {
+        btn.textContent = '📋 Скопировать JSON в буфер';
+      }, 2500);
+    });
+  }
+  </script>
 
   <div class="substep">
     <p><span class="num">2.1</span> Запусти <strong>Stellaris</strong> через Steam — откроется <strong>Paradox Launcher</strong> (НЕ сама игра пока).</p>
