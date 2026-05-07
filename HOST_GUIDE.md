@@ -104,15 +104,12 @@
 
 ---
 
-## ШАГ 5 — Steam настройки (3 минуты)
+## ШАГ 5 — Steam настройки (2 минуты)
 
-1. Steam → Settings → **Downloads** → **Download Region**:
-   - Выбери **Stockholm** (близко к РФ, оптимальный SDR PoP для тебя)
-
-2. Steam → Settings → **In-Game** → Steam Overlay:
+1. Steam → Settings → **In-Game** → Steam Overlay:
    - Можно оставить ON, но при лагах попробуй OFF
 
-3. Свойства Stellaris:
+2. Свойства Stellaris:
    - Steam Library → Stellaris → правый клик → Properties
    - **Launch Options** (внизу General tab):
      ```
@@ -120,7 +117,7 @@
      ```
    - Включаем DirectX 11 (быстрее) + диагностика OOS
 
-4. Cloud Save выключить:
+3. Cloud Save выключить:
    - Properties Stellaris → General → **Keep games saves in the Steam Cloud** = **OFF**
 
 ---
@@ -358,15 +355,14 @@
 ## ИТОГО ПОДГОТОВКА (1 раз перед субботой)
 
 - [ ] BIOS XMP включён
-- [ ] Steam коллекция подписана (25 модов)
-- [ ] Tailscale установлен и подключён
+- [ ] Steam коллекция подписана (29 модов)
+- [ ] Tailscale установлен и подключён (опционально)
 - [ ] Win 10: Game Mode OFF, Power Plan = High Performance, Defender exclusion, OneDrive не синкает
-- [ ] Steam Region = Stockholm
 - [ ] Steam Launch Options для Stellaris с `-dx11 -randomlog ...`
 - [ ] Discord overlay для Stellaris OFF
 - [ ] NVIDIA/AMD: Maximum Performance для stellaris.exe
 - [ ] settings.txt: vsync=no, autosave=4
-- [ ] Playset «MP Optimized» создан, 25 модов, порядок правильный, checksum записан
+- [ ] Playset «Opimizm» создан, 29 модов, порядок правильный, checksum в игре сверен
 - [ ] Тестовый запуск прошёл без ошибок
 
 После этого ты готов к партии. **В субботу — закрыл лишнее → запустил → создал лобби → погнали.**
