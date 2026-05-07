@@ -122,6 +122,16 @@
     border-left: 4px solid var(--accent);
     padding-left: 14px;
   }
+  h3 {
+    font-size: 20px;
+    margin: 24px 0 10px;
+    color: var(--accent);
+  }
+  h4 {
+    font-size: 16px;
+    margin: 18px 0 6px;
+    color: var(--accent-2);
+  }
 
   .step {
     background: var(--bg-card);
@@ -155,18 +165,19 @@
     flex-shrink: 0;
   }
   .step h3 {
-    font-size: 20px;
+    font-size: 22px;
     color: var(--text);
+    margin: 0;
   }
-  .step p, .step ul {
+  .step p, .step ul, .step ol {
     color: var(--text-dim);
-    margin-top: 8px;
+    margin: 8px 0;
   }
-  .step ul {
+  .step ul, .step ol {
     padding-left: 24px;
   }
   .step li {
-    margin: 4px 0;
+    margin: 6px 0;
   }
   .step a {
     color: var(--accent);
@@ -176,7 +187,8 @@
   .step a:hover {
     text-decoration: underline;
   }
-  code, pre {
+  .step strong { color: var(--text); }
+  code {
     font-family: 'Cascadia Code', 'Consolas', monospace;
     background: rgba(255, 255, 255, 0.06);
     padding: 2px 6px;
@@ -185,11 +197,21 @@
     color: var(--accent);
   }
   pre {
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    background: #0a0e1a;
     padding: 14px 16px;
     overflow-x: auto;
     margin: 12px 0;
     line-height: 1.5;
     border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 12px;
+  }
+  pre.ui {
+    color: var(--accent);
+    font-size: 11px;
+    line-height: 1.4;
   }
 
   .download-row {
@@ -257,7 +279,50 @@
     border-color: var(--accent-2);
     background: rgba(102, 136, 255, 0.08);
   }
+  .alert.tip {
+    border-color: var(--green);
+    background: rgba(92, 216, 126, 0.08);
+  }
   .alert strong { color: var(--accent); }
+
+  .substep {
+    background: rgba(0,0,0,0.2);
+    border-left: 3px solid var(--accent-2);
+    padding: 10px 14px;
+    margin: 10px 0;
+    border-radius: 4px;
+  }
+  .substep .num {
+    color: var(--accent);
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  .key {
+    display: inline-block;
+    background: linear-gradient(180deg, #2a3148, #1a2138);
+    border: 1px solid #3a4158;
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    margin: 0 2px;
+  }
+
+  .toc {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 24px;
+    margin: 24px 0;
+  }
+  .toc h4 { color: var(--accent); margin-top: 0; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 4px 0; }
+  .toc a { color: var(--text-dim); text-decoration: none; }
+  .toc a:hover { color: var(--accent); }
 
   footer {
     text-align: center;
@@ -289,92 +354,321 @@
   <span class="cta-sub">→ Steam Workshop · одной кнопкой 29 модов</span>
 </a>
 
-<h2>Шаги для каждого игрока</h2>
+<div class="toc">
+  <h4>Содержание</h4>
+  <ol>
+    <li><a href="#step1">Подписка на коллекцию (Steam Workshop)</a></li>
+    <li><a href="#step2">Импорт Playset (Paradox Launcher)</a></li>
+    <li><a href="#step3">Сверка checksum (внутри игры)</a></li>
+    <li><a href="#step4">Подготовка системы</a></li>
+    <li><a href="#step5">В субботу — старт партии</a></li>
+    <li><a href="#downloads">Скачать файлы</a></li>
+    <li><a href="#mods">Состав сборки (29 модов)</a></li>
+    <li><a href="#troubleshoot">Что делать если что-то не работает</a></li>
+  </ol>
+</div>
+
+<h2 id="step1">Шаг 1 — Подписка на коллекцию</h2>
 
 <div class="step">
   <div class="step-header">
     <span class="step-num">1</span>
-    <h3>Подписаться на коллекцию</h3>
+    <h3>Подписаться на все 29 модов одной кнопкой</h3>
   </div>
-  <p>Перейти по <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3719769152" target="_blank">ссылке коллекции</a>, нажать <strong>«Подписаться на все»</strong>. Steam скачает 29 модов в фоне (~1.5 ГБ). Подождите завершения загрузки.</p>
+
+  <div class="substep">
+    <p><span class="num">1.1</span> Открыть в браузере:<br>
+    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3719769152" target="_blank">https://steamcommunity.com/sharedfiles/filedetails/?id=3719769152</a></p>
+  </div>
+
+  <div class="substep">
+    <p><span class="num">1.2</span> Если не залогинен в Steam — нажми <strong>«Войти»</strong> в правом верху страницы.</p>
+  </div>
+
+  <div class="substep">
+    <p><span class="num">1.3</span> На странице коллекции в области с превью модов найди зелёную кнопку <strong>«Подписаться на все»</strong> / <strong>«Subscribe to all»</strong>. Нажми её.</p>
+    <pre class="ui">┌──────────────────────────────────────────┐
+│  Stellaris MP Optimized — Synkarion Crew  │
+│  29 предметов                              │
+│                                            │
+│  [ + Подписаться на все ]  ← клик          │
+└──────────────────────────────────────────┘</pre>
+  </div>
+
+  <div class="substep">
+    <p><span class="num">1.4</span> Steam запустит закачку модов в фоне (~1.5 ГБ). Можно следить через:</p>
+    <ul>
+      <li>Иконка Steam в трее (правый клик) → <strong>Downloads</strong></li>
+      <li>Или Steam клиент → внизу справа индикатор <strong>«Загружается»</strong></li>
+    </ul>
+    <p><strong>Дождись завершения загрузки</strong> — обычно 10-30 минут на нормальном интернете.</p>
+  </div>
+
+  <div class="alert tip">
+    <strong>✓ Готово когда:</strong> Steam → Settings → Storage → Stellaris → Workshop content = ~1.5 GB и нет активных загрузок.
+  </div>
 </div>
+
+<h2 id="step2">Шаг 2 — Импорт Playset</h2>
 
 <div class="step">
   <div class="step-header">
     <span class="step-num">2</span>
-    <h3>Импортировать Playset (порядок загрузки)</h3>
+    <h3>Импортировать готовый набор модов с правильным порядком</h3>
   </div>
-  <p>Скачать <a href="Opimizm.json" download><code>Opimizm.json</code></a>, затем в Paradox Launcher:</p>
-  <ul>
-    <li><strong>Игровые наборы</strong> → <strong>⋯</strong> (три точки) → <strong>Импорт игрового набора</strong></li>
-    <li>Выбрать скачанный <a href="Opimizm.json" download><code>Opimizm.json</code></a></li>
-    <li>Активировать набор «Opimizm»</li>
-  </ul>
-  <p>Все 29 модов автоматически встанут в правильном порядке.</p>
-  <p style="margin-top:12px;">
-    <a class="download-btn" href="Opimizm.json" download style="display:inline-block;width:auto;padding:10px 20px;">
+
+  <p>Файл <code>Opimizm.json</code> содержит все 29 модов в правильной последовательности загрузки. Не нужно ничего перетаскивать вручную — <strong>порядок загрузки в Stellaris критичен для совместимости в MP</strong>.</p>
+
+  <p style="margin-top:14px;">
+    <a class="download-btn" href="Opimizm.json" download style="display:inline-block;width:auto;padding:12px 22px;">
       ⬇ Скачать Opimizm.json
     </a>
   </p>
+
+  <div class="substep">
+    <p><span class="num">2.1</span> Запусти <strong>Stellaris</strong> через Steam — откроется <strong>Paradox Launcher</strong> (НЕ сама игра пока).</p>
+  </div>
+
+  <div class="substep">
+    <p><span class="num">2.2</span> В лаунчере слева в меню кликни на <strong>«Игровые наборы»</strong> (Playsets):</p>
+    <pre class="ui">┌── Paradox Launcher ──────────────────────────┐
+│ ┌─────────────┐  ┌─────────────────────────┐ │
+│ │ Главная     │  │                         │ │
+│ │ Дополнения  │  │   Active Playset        │ │
+│ │▶Игровые     │  │   ───────────           │ │
+│ │  наборы  ◄──┼──┤ ← клик сюда            │ │
+│ │ Все моды    │  │                         │ │
+│ │ Настройки   │  │                         │ │
+│ └─────────────┘  └─────────────────────────┘ │
+└──────────────────────────────────────────────┘</pre>
+  </div>
+
+  <div class="substep">
+    <p><span class="num">2.3</span> Сверху по центру/справа от названия Playset нажми на <strong>⋯</strong> (три точки) или <strong>стрелочки</strong>:</p>
+    <pre class="ui">┌── Игровые наборы ──────────────────────────┐
+│                                              │
+│  [ Initial playset  ▼ ]   [ ⋯ ] ◄── клик    │
+│                              │                │
+│                              ▼                │
+│                            ┌─────────────┐    │
+│                            │ Создать ... │    │
+│                            │ Дублировать │    │
+│                            │ Импорт      │ ◄── │
+│                            │ Экспорт     │    │
+│                            └─────────────┘    │
+└──────────────────────────────────────────────┘</pre>
+  </div>
+
+  <div class="substep">
+    <p><span class="num">2.4</span> Кликни <strong>«Импорт игрового набора»</strong> / <strong>«Import Playset»</strong>.</p>
+  </div>
+
+  <div class="substep">
+    <p><span class="num">2.5</span> Откроется диалог. Перетащи в него скачанный <a href="Opimizm.json" download><code>Opimizm.json</code></a> или нажми <strong>«Browse»</strong> и выбери файл с диска.</p>
+  </div>
+
+  <div class="substep">
+    <p><span class="num">2.6</span> Лаунчер скажет <strong>«Импорт успешен»</strong> и появится новый набор <strong>«Opimizm»</strong> с 29 модами.</p>
+  </div>
+
+  <div class="substep">
+    <p><span class="num">2.7</span> Сделай его активным:</p>
+    <ul>
+      <li>В выпадающем списке наверху выбери <strong>«Opimizm»</strong></li>
+      <li>Должен показаться список 29 модов с зелёными переключателями ✓</li>
+    </ul>
+  </div>
+
+  <div class="alert info">
+    <strong>Не запускай игру пока:</strong> сначала Шаг 3 — сверка checksum. После запуска игры в главном меню проверим что у всех всё совпало.
+  </div>
+
+  <div class="alert warn">
+    <strong>Если в наборе НЕ 29 модов:</strong> возможно Steam ещё не докачал часть модов. Подожди завершения загрузки (Шаг 1.4) и попробуй импорт снова. Или Verify integrity: Steam → Stellaris → Properties → Local Files → Verify integrity of game files.
+  </div>
 </div>
+
+<h2 id="step3">Шаг 3 — Сверка checksum</h2>
 
 <div class="step">
   <div class="step-header">
     <span class="step-num">3</span>
-    <h3>Сверить checksum</h3>
+    <h3>Убедиться что у тебя такая же сборка как у других игроков</h3>
   </div>
+
   <div class="alert warn">
-    <strong>⚠️ Важно:</strong> checksum нужно смотреть <strong>ВНУТРИ ИГРЫ</strong> (главное меню Stellaris), а <strong>не в Paradox Launcher</strong>. В лаунчере неправильный checksum — он показывает другую сумму.
+    <strong>⚠️ ВАЖНО:</strong> checksum нужно смотреть <strong>ВНУТРИ ИГРЫ</strong> (главное меню Stellaris), <strong>а НЕ в Paradox Launcher</strong>! В лаунчере показывается checksum чистой игры без модов — это другая сумма и для MP она <strong>не подходит</strong>.
   </div>
-  <p>Запусти Stellaris с активным Playset «Opimizm». В <strong>главном меню Stellaris</strong> внизу/снизу справа будет строка:</p>
-  <pre>Версия: Cetus v4.3.5 (3e40)</pre>
-  <p>Где <code>3e40</code> — наш текущий эталон.</p>
+
+  <div class="substep">
+    <p><span class="num">3.1</span> В Paradox Launcher с активным Playset «Opimizm» нажми зелёную кнопку <strong>«Играть»</strong> / <strong>«Play»</strong> внизу справа.</p>
+  </div>
+
+  <div class="substep">
+    <p><span class="num">3.2</span> Дождись загрузки. Stellaris откроет <strong>главное меню</strong> (с кнопками «Новая игра», «Загрузить», «Мультиплеер» и т.д.).</p>
+  </div>
+
+  <div class="substep">
+    <p><span class="num">3.3</span> Внизу или сверху в углу главного меню найди строку с версией и checksum:</p>
+    <pre class="ui">┌── Stellaris (Главное меню) ─────────────────┐
+│                                              │
+│             STELLARIS                        │
+│                                              │
+│        [ Новая игра ]                        │
+│        [ Загрузить игру ]                    │
+│        [ Мультиплеер ]                       │
+│        [ Настройки ]                         │
+│                                              │
+│  Версия: Cetus v4.3.5 (3e40) ◄── checksum   │
+└──────────────────────────────────────────────┘</pre>
+  </div>
+
+  <div class="substep">
+    <p><span class="num">3.4</span> <strong>Эталон сейчас:</strong></p>
+    <pre>Версия: Cetus v4.3.5 (3e40)</pre>
+    <p>Если у тебя <strong>3e40</strong> — всё ок, ты в одной сборке с остальными.</p>
+  </div>
+
   <div class="alert info">
-    <strong>Hotfix-ы модов:</strong> RegiZero обновляет Ultimate Automation почти каждый день. Когда он выпустит hotfix — checksum изменится у всех. <strong>В пятницу вечером сверим новый эталон</strong> в Discord.
+    <strong>Hotfix-ы модов:</strong> RegiZero обновляет «Ultimate Automation 4.3» почти каждый день. Когда он выпускает hotfix — checksum изменяется у всех. Мы <strong>в пятницу вечером сверим новый эталон</strong> в Discord. До этого момента эталон может отличаться.
   </div>
-  <p>Если checksum <strong>не совпадает</strong>:</p>
-  <ul>
-    <li>Verify integrity Stellaris (Steam → Library → Stellaris → Properties → Local Files)</li>
-    <li>Подождать пока Steam докачает Workshop subscriptions</li>
-    <li>Сверить состав модов с <a href="Opimizm.json">Opimizm.json</a> (должно быть ровно 29 модов)</li>
-  </ul>
+
+  <div class="alert warn">
+    <strong>Если checksum НЕ совпадает с эталоном:</strong>
+    <ol>
+      <li>Verify integrity Stellaris (Steam → Library → Stellaris → Properties → Local Files → Verify integrity)</li>
+      <li>Подожди пока Steam докачает все Workshop subscriptions (Шаг 1.4)</li>
+      <li>Сверь количество модов в наборе — должно быть ровно <strong>29</strong></li>
+      <li>Сверь набор DLC — должен совпадать с другими игроками (см. Шаг 4)</li>
+      <li>Импортируй <a href="Opimizm.json" download><code>Opimizm.json</code></a> заново</li>
+    </ol>
+  </div>
 </div>
+
+<h2 id="step4">Шаг 4 — Подготовка системы</h2>
 
 <div class="step">
   <div class="step-header">
     <span class="step-num">4</span>
-    <h3>Подготовка системы (для всех)</h3>
+    <h3>Системные настройки чтобы не лагало в late-game</h3>
   </div>
+
+  <p>Эти настройки — для всех 5 игроков. Времени займут 5 минут.</p>
+
+  <h4>4.1 Discord</h4>
+  <p>Открой Discord → <strong>User Settings</strong> (шестерёнка слева внизу) → <strong>Game Activity</strong> / <strong>Игровой оверлей</strong>:</p>
   <ul>
-    <li><strong>Discord overlay для Stellaris</strong> = OFF</li>
-    <li><strong>OneDrive</strong> не должен синкать <code>Documents\Paradox Interactive\</code></li>
-    <li><strong>Antivirus</strong> exclusion на Stellaris install + Documents\Paradox Interactive\Stellaris</li>
-    <li><strong>Windows Game Mode</strong> = OFF (для гибридных CPU как 12600KF особенно)</li>
-    <li><strong>NVIDIA Control Panel</strong> для Stellaris.exe: Power = Maximum Performance, Anti-Lag/Reflex = OFF</li>
+    <li>Найти <strong>Stellaris</strong> в списке</li>
+    <li>Переключатель <strong>«Overlay»</strong> = <strong>OFF</strong></li>
   </ul>
-  <p>Подробный гайд для хоста (i7-9700K) — в файле <a href="HOST_GUIDE.md">HOST_GUIDE.md</a>.</p>
+
+  <h4>4.2 Windows Game Mode (Win 10/11)</h4>
+  <p>Settings (<span class="key">Win</span>+<span class="key">I</span>) → <strong>Gaming</strong> → <strong>Game Mode</strong> = <strong>OFF</strong>.</p>
+  <p style="font-size:13px;">На гибридных CPU (например Intel 12-14 поколения) Game Mode может перекидывать поток на E-cores. Лучше выключить.</p>
+
+  <h4>4.3 Antivirus exception</h4>
+  <p>Чтобы Defender не сканировал каждое автосохранение Stellaris:</p>
+  <ul>
+    <li><strong>Settings</strong> → <strong>Update & Security / Privacy & Security</strong> → <strong>Windows Security</strong> → <strong>Virus & threat protection</strong></li>
+    <li><strong>Manage settings</strong> → <strong>Add or remove exclusions</strong></li>
+    <li>Add exclusion → <strong>Folder</strong>:</li>
+    <ul>
+      <li><code>C:\Program Files (x86)\Steam\steamapps\common\Stellaris</code></li>
+      <li><code>C:\Users\&lt;ТВОЁ_ИМЯ&gt;\Documents\Paradox Interactive\Stellaris</code></li>
+    </ul>
+    <li>Add exclusion → <strong>Process</strong> → <code>stellaris.exe</code></li>
+  </ul>
+
+  <h4>4.4 OneDrive</h4>
+  <p>Если синкается папка Documents с OneDrive — выключи синк для <code>Documents\Paradox Interactive\</code>:</p>
+  <ul>
+    <li>Кликни иконку OneDrive в трее → <strong>Settings</strong> → <strong>Backup</strong> → <strong>Manage Backup</strong></li>
+    <li>Если <strong>Documents</strong> включён — выключи. Иначе автосохранения Stellaris будут двойной нагрузкой</li>
+  </ul>
+
+  <h4>4.5 Power Plan</h4>
+  <p><span class="key">Win</span>+<span class="key">R</span> → <code>powercfg.cpl</code> → <strong>High Performance</strong> (Высокая производительность).</p>
+
+  <h4>4.6 NVIDIA Control Panel (для GeForce)</h4>
+  <ul>
+    <li>Правый клик на рабочем столе → <strong>NVIDIA Control Panel</strong></li>
+    <li><strong>Manage 3D settings</strong> → <strong>Program Settings</strong> → Add → выбери <code>stellaris.exe</code></li>
+    <li>Power management mode = <strong>Prefer maximum performance</strong></li>
+    <li>Low Latency Mode = <strong>Off</strong> (это Reflex/Anti-Lag, для grand strategy не нужно)</li>
+    <li>Vertical sync = <strong>Off</strong></li>
+  </ul>
+
+  <h4>4.7 settings.txt</h4>
+  <p>После первого запуска игры закрой её, открой блокнотом:</p>
+  <pre>C:\Users\&lt;ТВОЁ_ИМЯ&gt;\Documents\Paradox Interactive\Stellaris\settings.txt</pre>
+  <p>Найди и поменяй:</p>
+  <pre>vsync=no
+multi_sampling=0
+shadowSize=0
+maxanisotropy=0
+autosave=4</pre>
+  <p style="font-size:13px;"><code>autosave=4</code> = раз в год вместо раз в месяц = меньше фризов в late-game.</p>
+
+  <h4>4.8 Steam Cloud Save</h4>
+  <p>Steam Library → Stellaris → правый клик → <strong>Properties</strong> → <strong>General</strong> → переключатель <strong>«Keep games saves in the Steam Cloud»</strong> = <strong>OFF</strong>.</p>
+
+  <h4>4.9 (Опционально для хоста) Process Lasso</h4>
+  <p>Только если у тебя Intel 12-14 поколения с E-cores (например <code>i5-12600KF</code>). Иначе можно пропустить.</p>
+  <ul>
+    <li>Скачай: <a href="https://bitsum.com/processlasso/" target="_blank">bitsum.com/processlasso</a></li>
+    <li>Установи, найди в списке <code>stellaris.exe</code></li>
+    <li>CPU Affinity → <strong>Always</strong> → оставить только cores 0-11 (P-cores), снять 12-15 (E-cores)</li>
+  </ul>
 </div>
+
+<h2 id="step5">Шаг 5 — В субботу старт</h2>
 
 <div class="step">
   <div class="step-header">
     <span class="step-num">5</span>
-    <h3>В субботу — старт</h3>
+    <h3>Что делать в день партии</h3>
   </div>
+
+  <h4>За 30 минут до партии</h4>
+  <ol>
+    <li>Все 5 онлайн в Discord</li>
+    <li>Закрыть лишнее: браузер с тяжёлыми вкладками, OBS, тяжёлые программы (видеоредактор, IDE)</li>
+    <li>Запустить Steam → подождать пока докачаются обновления Workshop</li>
+    <li>Запустить Stellaris через Paradox Launcher (Playset «Opimizm»)</li>
+    <li>В главном меню сверить checksum — у всех 5 должен быть одинаковый</li>
+    <li>Если у кого-то другой → обновить Workshop / Verify integrity</li>
+  </ol>
+
+  <h4>Создание лобби (хост)</h4>
+  <ol>
+    <li>Главное меню → <strong>Multiplayer</strong></li>
+    <li><strong>Host Game</strong></li>
+    <li>Galaxy settings — обсудить компанией перед стартом</li>
+    <li>Создать лобби — пригласить друзей через Steam Friends</li>
+  </ol>
+
+  <h4>Подключение клиентов</h4>
+  <ol>
+    <li>Friends list в Steam — увидите хоста с пометкой «играет в Stellaris»</li>
+    <li>Правый клик по нику хоста → <strong>Join Game</strong></li>
+    <li>Или: Multiplayer → Browse → войти по приглашению</li>
+  </ol>
+
+  <h4>Во время игры</h4>
   <ul>
-    <li>За 30 мин до партии — все 5 онлайн в Discord</li>
-    <li>Закрыть лишнее (браузер, OBS, тяжёлые программы)</li>
-    <li>Запустить Steam, дождаться обновлений Workshop</li>
-    <li>Сверить checksum в Discord — у всех 5 одинаковый</li>
-    <li>Хост (9700K) создаёт MP-лобби через Steam Friends</li>
-    <li>Speed 3-4 в late-game (после 2300), не 5</li>
-    <li>Если у тебя CPU слабее 9700K → speed 2 в late-game (иначе тормозишь всех)</li>
+    <li><strong>Speed 3-4</strong> в late-game (после 2300 года), <strong>не 5</strong></li>
+    <li>Если у тебя CPU слабее i7-9700K → <strong>speed 2</strong> в late-game (иначе тормозишь всех)</li>
+    <li>Не открывай тяжёлые UI окна во время монтлый-tick</li>
+    <li>Autosave раз в год — это норма, 1-2 секунды фриз</li>
+    <li>При спайке лагов — пауза 30 сек, продолжайте</li>
   </ul>
-  <div class="alert">
+
+  <div class="alert info">
     <strong>Lockstep правило:</strong> в Stellaris MP симуляция дублируется на каждом клиенте — самый слабый CPU задаёт скорость для всех. Хостит i7-9700K (предположительно слабейший). Если у тебя слабее — играй на низкой скорости в late-game.
   </div>
 </div>
 
-<h2>Скачать файлы</h2>
+<h2 id="downloads">Скачать файлы</h2>
 
 <div class="download-row">
   <a class="download-btn" href="Opimizm.json" download>
@@ -391,19 +685,19 @@
 
 <div class="step" style="font-family:'Cascadia Code',Consolas,monospace;font-size:13px;">
   <p style="margin-bottom:6px;color:var(--text-dim);">Сборка целиком:</p>
-  <pre id="link-site">https://mokhnatti.github.io/stellaris-mp-optimized/</pre>
+  <pre>https://mokhnatti.github.io/stellaris-mp-optimized/</pre>
 
   <p style="margin:14px 0 6px;color:var(--text-dim);">Steam коллекция:</p>
-  <pre id="link-coll">https://steamcommunity.com/sharedfiles/filedetails/?id=3719769152</pre>
+  <pre>https://steamcommunity.com/sharedfiles/filedetails/?id=3719769152</pre>
 
   <p style="margin:14px 0 6px;color:var(--text-dim);">Opimizm.json (для скачивания):</p>
-  <pre id="link-json">https://mokhnatti.github.io/stellaris-mp-optimized/Opimizm.json</pre>
+  <pre>https://mokhnatti.github.io/stellaris-mp-optimized/Opimizm.json</pre>
 
   <p style="margin:14px 0 6px;color:var(--text-dim);">HOST_GUIDE.md:</p>
-  <pre id="link-guide">https://mokhnatti.github.io/stellaris-mp-optimized/HOST_GUIDE.md</pre>
+  <pre>https://mokhnatti.github.io/stellaris-mp-optimized/HOST_GUIDE.md</pre>
 </div>
 
-<h2>Состав сборки</h2>
+<h2 id="mods">Состав сборки (29 модов)</h2>
 
 <details>
   <summary>Performance стек (10 модов)</summary>
@@ -458,6 +752,53 @@
   </ul>
 </details>
 
+<h2 id="troubleshoot">Что делать если что-то не работает</h2>
+
+<details>
+  <summary>Не вижу мода в Playset после импорта</summary>
+  <p>Steam ещё не докачал. Открой Steam → Downloads — посмотри прогресс. Для проверки: Steam → Library → Stellaris → Properties → Workshop → должно быть ~1.5 GB. Если меньше — Verify integrity.</p>
+</details>
+
+<details>
+  <summary>Checksum не совпадает с эталоном</summary>
+  <ul>
+    <li>Сделай Verify integrity</li>
+    <li>Подожди пока Steam докачает все Workshop subscriptions</li>
+    <li>Сверь набор DLC — у всех должен быть одинаковый</li>
+    <li>Импортируй Opimizm.json заново</li>
+    <li>Если RegiZero выпустил hotfix Ultimate Automation — у всех изменится. Сверим новый эталон в Discord</li>
+  </ul>
+</details>
+
+<details>
+  <summary>OOS (Out Of Sync) посреди игры</summary>
+  <ol>
+    <li>Все игроки → Main Menu (НЕ desktop)</li>
+    <li>Хост грузит autosave (НЕ manual save)</li>
+    <li>Все возвращаются</li>
+    <li>Если повторяется — удали папку <code>Documents\Paradox Interactive\Stellaris\oos\</code> у всех</li>
+    <li>Откат на autosave −1 год</li>
+  </ol>
+</details>
+
+<details>
+  <summary>CTD (Crash To Desktop)</summary>
+  <ul>
+    <li>Лог: <code>Documents\Paradox Interactive\Stellaris\logs\error.log</code> — кинь в Discord, посмотрим</li>
+    <li>В late-game (после 2400) бывает у всех — возможно crisis spike</li>
+    <li>Грузим autosave −1 год от падения</li>
+  </ul>
+</details>
+
+<details>
+  <summary>Сильно лагает на speed 5</summary>
+  <ul>
+    <li>В late-game это норма — все играют на speed 3-4</li>
+    <li>Если у тебя слабый CPU — speed 2 в late-game</li>
+    <li>Если жопа — хост через консоль чистит галактику: <code>kill_country [id]</code> мёртвых AI империй</li>
+  </ul>
+</details>
+
 <h2>Стресс-тест (на Ryzen 5800X3D)</h2>
 
 <div class="step">
@@ -471,17 +812,10 @@
   <p>На i7-9700K хосте ожидается +30-50% к этим числам — всё ещё играбельно до 2400.</p>
 </div>
 
-<h2>Помощь и обратная связь</h2>
-
-<div class="step">
-  <p>Если что-то не работает — пишите в Discord партии. Эталонный сейв и логи стресс-теста сохранены, можно сравнивать перформанс.</p>
-  <p>Подробный гайд для хоста: <a href="HOST_GUIDE.md">HOST_GUIDE.md</a></p>
-</div>
-
 <footer>
-  Собрано в течение 03–06 мая 2026 ·
+  Собрано 03–07 мая 2026 ·
   <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3719769152" target="_blank">Steam коллекция</a> ·
-  <a href="https://github.com/Mokhnatti" target="_blank">github.com/Mokhnatti</a>
+  <a href="https://github.com/Mokhnatti/stellaris-mp-optimized" target="_blank">GitHub repo</a>
 </footer>
 
 </div>
