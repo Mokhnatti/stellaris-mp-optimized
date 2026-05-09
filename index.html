@@ -489,6 +489,7 @@
     <li><a href="#step5">В субботу — старт партии</a></li>
     <li><a href="#cloud">🌩️ Для играющих с облака</a></li>
     <li><a href="#downloads">Скачать файлы</a></li>
+    <li><a href="#popups">Меню от модов — НЕ ТРОГАТЬ</a></li>
     <li><a href="#mods">Порядок загрузки 26 модов</a></li>
     <li><a href="#house">⚖️ House Rules для 5 игроков</a></li>
     <li><a href="#galaxy">🌌 Galaxy settings рекомендации</a></li>
@@ -643,6 +644,31 @@
 
   <div class="alert warn">
     <strong>Если в наборе НЕ 26 модов:</strong> возможно Steam ещё не докачал часть модов. Подожди завершения загрузки (Шаг 1.4) и попробуй импорт снова. Или Verify integrity: Steam → Stellaris → Properties → Local Files → Verify integrity of game files.
+  </div>
+</div>
+
+<h2 id="popups">⚠️ Меню от модов при запуске — НЕ ТРОГАТЬ</h2>
+
+<div class="step">
+  <div class="step-header">
+    <span class="step-num">!</span>
+    <h3>Когда запустишь Stellaris с плейсетом — выскочат окна. Все закрывать.</h3>
+  </div>
+  <p>При первом запуске игры моды (Casako, AIGPO, Tasty Maid и др.) показывают свои меню настроек. <strong>Ничего не настраивай — просто закрывай.</strong></p>
+
+  <p>Если ВСЕ 5 игроков ничего не трогают — у всех будут одинаковые ванильные дефолты модов → checksum совпадёт → партия пойдёт без OOS.</p>
+
+  <h4>Какие меню могут выскочить и что нажимать:</h4>
+
+  <ul>
+    <li><strong>Mod Menu Panel</strong> (с иконками модов слева + INFINITE STELLARIS 小傘 справа) → закрыть через крестик / ESC</li>
+    <li><strong>Kasako Core "Start Setting"</strong> (страницы с Habitats cap, AI species и т.д.) → нажать <strong>Start Setting Completed</strong> на каждой странице, ничего не меняя</li>
+    <li><strong>AI Game Performance Optimisation</strong> (зелёные/красные кнопки опций) → нажать <strong>Выход</strong> (красная кнопка по центру)</li>
+    <li>Любое другое всплывающее меню от мода → ESC или закрытие через крестик</li>
+  </ul>
+
+  <div class="alert warn">
+    <strong>⚠️ Важно:</strong> Если хоть один игрок изменит настройки в Modmenu, а другие нет — checksum может разойтись и будет OOS (рассинхрон). Поэтому <strong>правило: не трогаем менюшки от модов вообще</strong>.
   </div>
 </div>
 
