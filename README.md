@@ -52,4 +52,4 @@
 
 `-nakama` критичен с Tailscale (лечит "infinite connecting").
 
-Версия Stellaris: **Cetus v4.3.5**, эталон checksum: **c29a** (после удаления 4 модов checksum изменится — сверим в Discord перед партией).
+Версия Stellaris: **Cetus v4.3.5**, эталон checksum: **fd4d** (после удаления 4 модов checksum изменится — сверим в Discord перед партией).
