@@ -42,7 +42,7 @@
 
 3. На странице коллекции найди кнопку **«Subscribe to all»** / **«Подписаться на все»** — нажми
 
-4. Steam начнёт скачивать **25 модов** (~1.5 ГБ) в `Steam\steamapps\workshop\content\281990\`
+4. Steam начнёт скачивать **26 модов** (~1.5 ГБ) в `Steam\steamapps\workshop\content\281990\`
 
 5. Проверь что скачалось:
    - Steam → Library → Stellaris → правый клик → Properties → Local Files → **Verify integrity**
@@ -113,9 +113,18 @@
    - Steam Library → Stellaris → правый клик → Properties
    - **Launch Options** (внизу General tab):
      ```
-     -dx11 -randomlog -randomlog_stack=5 -randomlog_frames=3 -gamestatetimer
+     -nolauncher -nakama -randomlog -randomlog_stack=5 -randomlog_frames=3
      ```
-   - Включаем DirectX 11 (быстрее) + диагностика OOS
+   - `-nolauncher` — минует лаунчер (-30-60 сек старта)
+   - `-nakama` — Nakama-бэкенд для MP (**критично с Tailscale**: лечит "infinite connecting")
+   - `-randomlog*` — диагностика OOS (только хост)
+
+   **Клиенты (4 игрока без хоста)** ставят:
+     ```
+     -nolauncher -nakama
+     ```
+
+   ⚠️ **Не использовать** `-unattended`, `-no_audio`, `-hyperlanes_optimization`, `-nobetatesterMode` — это мифы, таких флагов в Stellaris нет.
 
 3. Cloud Save выключить:
    - Properties Stellaris → General → **Keep games saves in the Steam Cloud** = **OFF**
@@ -181,41 +190,51 @@
 2. Слева **Игровые наборы** (Playsets) → **+ Создать новый**
 3. Имя: **MP Optimized** или **Synkarion Crew**
 
-### Включить ВСЕ 25 модов
+### Импортировать готовый плейсет (БЫСТРЕЕ всего)
 
-Нажми **Включить все** (или вручную проверь что все 25 модов из коллекции включены).
+Скачай актуальный JSON и импортируй в лаунчер — порядок загрузки настроится автоматически:
 
-### Поставить ПРАВИЛЬНЫЙ порядок загрузки
+1. Скачай **Opimizm.json** с https://mokhnatti.github.io/stellaris-mp-optimized/
+2. В Paradox Launcher → Playsets → **Import**
+3. Выбери скачанный файл
+4. Готово — 26 модов в правильном порядке
 
-Перетащи моды в этот порядок (мышка за левый край ☰):
+### Если делаешь вручную — порядок загрузки:
 
 ```
-1.  ~~Ariphaos Unofficial Patch (4.2)
+0.  ~~Stellaris [v4.3] General Fixes
+1.  Stellaris Stability Patch
 2.  ~~Scripted Trigger Undercoat
-3.  ~ StarNet AI
-4.  ! Casako's Framework & Modmenu
-5.  ! Better Performance & Utilities
-6.  AI Game Performance Optimisation 4.3
-7.  AI will not summon dimensional fleet
-8.  Stellaris Stability Patch
-9.  Disable Empire Focus
-10. UI Overhaul Dynamic
-11. Suppress Anomaly Pop-ups
-12. StopSpam
-13. Precursor Selection
+3.  AI Game Performance Optimisation
+4.  Disable Empire Focus
+5.  ! Casako's Framework & Modmenu
+6.  UI Overhaul Dynamic
+7.  StopSpam
+8.  Suppress Anomaly Pop-ups
+9.  Precursor Selection
+10. Total Assimilation
+11. Starbase Strong
+12. Gray with animated portrait
+13. Tasty Maid: Portraits
 14. No Shipyard Juggernauts
-15. Total Assimilation
-16. Ultimate Automation 4.3
-17. Starbase Strong
-18. Gray with animated portrait
-19. Tasty Maid: Portraits
-20. Tasty Maid: Events
-21. Spacefleet Tactica
-22. SFT ADD-ON: Marine Frigates for AI
-23. SFT ADD-ON: Specialist Frigates
-24. zz_ Tasty Maid Static (no animation)
-25. zz_ Cetus MP Performance Patch  ← САМЫЙ ПОСЛЕДНИЙ
+15. AI will not summon dimensional fleet
+16. ~ StarNet AI
+17. Spacefleet Tactica
+18. SFT ADD-ON: Marine Frigates for AI
+19. SFT ADD-ON: Specialist Frigates
+20. Ultimate Automation
+21. Tasty Maid: Portraits (Русификатор)
+22. zz_ Cetus MP Performance Patch
+23. zz_ Tasty Maid Static (no animation)
+24. zz_ RU Pack - Synkarion Crew
+25. ! Better Performance & Utilities  ← САМЫЙ ПОСЛЕДНИЙ (overrides 00_on_actions.txt)
 ```
+
+**УДАЛЕНЫ из старой сборки** (4 мода):
+- ❌ Ariphaos Unofficial Patch (4.2) — конфликт с General Fixes (#0), который и есть его обновление
+- ❌ Tasty Maid: Events — не обновлён под 4.3, **OOS-риск** из-за random_list блоков
+- ❌ Ariphaos Unofficial Patch RUS — русик удалённого мода
+- ❌ Tasty Maid: Events RU Localisation — русик удалённого мода
 
 ### Проверить checksum
 
@@ -230,7 +249,7 @@
 
 У тебя **должен быть точно такой же** `c29a`. Если другой:
 - Проверь версию игры (должна быть 4.3.5)
-- Проверь что включены **все 30 модов** в правильном порядке
+- Проверь что включены **все 26 модов** в правильном порядке
 - Проверь набор DLC (должен совпадать с Рамилем)
 - Verify Stellaris через Steam → Properties → Local Files
 
@@ -307,6 +326,83 @@
 
 ---
 
+## ⚠️ HOUSE RULES — ОБЯЗАТЕЛЬНО ВСЕМ 5 ИГРОКАМ
+
+### КРИТИЧНЫЕ (от ночного теста — без них партия упадёт)
+
+1. **Tutorial = NONE** у всех 5 игроков (Settings → Gameplay → Tutorials = OFF)
+   *Tutorial-бот связан с CTD на First Contact (наш краш в 2369 = именно этот класс багов)*
+
+2. **No uplift до 2300** — никто не uplift'ит pre-FTL примитивов в первые 100 лет
+
+3. **First Contact protocol** — при появлении First Contact с другим human:
+   - Немедленная пауза, manual save
+   - Второй игрок выходит в лобби
+   - Хост резолвит событие один
+   - Save → игрок возвращается
+
+4. **Hard pause при любом диалоге** — anomaly, first contact, special project, GalCom vote, leader event. Игрок с открытым окном кричит "пауза" в голосовом
+
+5. **Steam Cloud Sync OFF** для Stellaris у всех (Properties → Updates → Cloud Saves)
+   *Sync во время автосейва документированно ломает MP-сейвы*
+
+6. **Никаких других VPN** одновременно с Tailscale (Mullvad/Proton конфликтуют с CGNAT)
+
+### ВЫСОКИЙ ПРИОРИТЕТ (стабильность late-game)
+
+7. **Speed cap 4** для всей партии (не 5 даже на старте после 2300)
+
+8. **Никаких действий на паузе** — задокументированный паттерн дрифта
+
+9. **Сохранения:**
+   - Autosave yearly до 2250, потом каждые 5 лет
+   - Хост manual save каждые 25 лет (`MP_2275_pre-midgame.sav`)
+   - **Manual save обязателен перед:** L-Gate opening, объявление войны 2+ humans, megastructure tier complete, любая ascension перка с цепочкой событий
+
+10. **L-Gate:** один назначенный handler. Save `pre-Lgate.sav` перед открытием. Если Gray Tempest — **остальные не входят в L-Cluster**
+
+11. **OOS-протокол:**
+    - Сначала **игнорировать** (часто резолвится сам за 1-2 минуты)
+    - Если баги (флоты не мерджатся) → пауза → клик Sync → ждём
+    - Если 2 раза не помог → save → main menu → хост ре-хостит → join по одному
+    - Если рассинхрон после релоада → autosave −1 in-game месяц
+
+### ОПЦИОНАЛЬНО (не для первой партии)
+
+- Megastructures: max 1 одновременная на human
+- Soft cap pops: ~600 на империю к 2350
+- **Запрещено:** Cosmogenesis, Become The Crisis, Wilderness origin, Colossus
+
+---
+
+## НАСТРОЙКИ В ИГРЕ ПЕРЕД ЛОББИ (хост)
+
+### Casako Modmenu (иконка наверху главного UI игры)
+
+**Better Performance & Utilities:**
+- ✅ ВКЛ: "Prohibit AI habitat construction"
+- ✅ ВКЛ: "Prohibit AI gateway construction"
+- ✅ ВКЛ: "Stop AI from modifying species"
+- ✅ ВКЛ: "Supreme species integration" (default)
+- ❌ ВЫКЛ: "Reduce number of ships" (меняет AI fleet composition в тике)
+- ❌ ВЫКЛ: "Trade optimization" (большой checksum-удар)
+- ❌ ВЫКЛ: "New pop growth control"
+- ❌ ВЫКЛ: любые "experimental" тоглы
+
+**Casako Modmenu:**
+- ❌ ВЫКЛ: "Universal Resource Patch" (если есть другие ресурс-моды)
+
+**Spacefleet Tactica:**
+- ❌ ВЫКЛ: "Apply combat modifier to AI vs AI battles" — экономит **1700ms на тик в late game** без потери для игроков
+
+**Ultimate Automation (через ингейм-меню мода у каждого игрока):**
+- ❌ ВЫКЛ: Auto pop migration, Auto resettlement, Auto colonisation, Auto terraforming
+- ✅ ВКЛ можно: Auto fleet/army merger, Auto recruit armies/leaders, Auto outfit starbases
+
+**Делать ХОСТ ДО первого сейва** — настройки сохраняются в save и расходятся клиентам.
+
+---
+
 ## ПРОБЛЕМЫ И РЕШЕНИЯ
 
 ### Игра не запускается / падает на загрузке
@@ -355,14 +451,18 @@
 ## ИТОГО ПОДГОТОВКА (1 раз перед субботой)
 
 - [ ] BIOS XMP включён
-- [ ] Steam коллекция подписана (29 модов)
+- [ ] Steam коллекция подписана (26 модов)
 - [ ] Tailscale установлен и подключён (опционально)
 - [ ] Win 10: Game Mode OFF, Power Plan = High Performance, Defender exclusion, OneDrive не синкает
-- [ ] Steam Launch Options для Stellaris с `-dx11 -randomlog ...`
+- [ ] Steam Launch Options: `-nolauncher -nakama -randomlog -randomlog_stack=5 -randomlog_frames=3` (хост) или `-nolauncher -nakama` (клиенты)
+- [ ] Steam Cloud Sync для Stellaris **OFF**
+- [ ] Tutorial = NONE в настройках Stellaris
 - [ ] Discord overlay для Stellaris OFF
 - [ ] NVIDIA/AMD: Maximum Performance для stellaris.exe
 - [ ] settings.txt: vsync=no, autosave=4
-- [ ] Playset «Opimizm» создан, 29 модов, порядок правильный, checksum в игре сверен
+- [ ] Playset «Opimizm» импортирован из JSON (https://mokhnatti.github.io/stellaris-mp-optimized/), 26 модов, checksum в игре сверен
+- [ ] House Rules прочитаны всеми 5 игроками
+- [ ] BPU/Modmenu настройки применены хостом ДО первого сейва
 - [ ] Тестовый запуск прошёл без ошибок
 
 После этого ты готов к партии. **В субботу — закрыл лишнее → запустил → создал лобби → погнали.**
