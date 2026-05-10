@@ -7,11 +7,11 @@
 ## Быстро
 
 1. Подписаться на коллекцию: https://steamcommunity.com/sharedfiles/filedetails/?id=3719769152
-2. Скачать [Opimizm.json](Opimizm.json) — импортировать в Paradox Launcher (26 модов в правильном порядке)
+2. Скачать [Opimizm.json](Opimizm.json) — импортировать в Paradox Launcher (27 модов в правильном порядке)
 3. Сверить checksum **внутри игры** в главном меню Stellaris (НЕ в лаунчере!)
 4. Подробный гайд для хоста: [HOST_GUIDE.md](HOST_GUIDE.md)
 
-## Состав (26 модов)
+## Состав (27 модов)
 
 - 11 геймплейных модов (UI Overhaul, Tasty Maid Portraits, SFT + 2 аддона, Starbase Strong, Total Assimilation и т.д.)
 - 9 perf-модов (General Fixes, Stability Patch, Scripted Trigger Undercoat, AIGPO, Casako, BPU, StarNet AI, Disable Empire Focus, AI No Dim Fleet)

@@ -42,7 +42,7 @@
 
 3. На странице коллекции найди кнопку **«Subscribe to all»** / **«Подписаться на все»** — нажми
 
-4. Steam начнёт скачивать **26 модов** (~1.5 ГБ) в `Steam\steamapps\workshop\content\281990\`
+4. Steam начнёт скачивать **27 модов** (~1.5 ГБ) в `Steam\steamapps\workshop\content\281990\`
 
 5. Проверь что скачалось:
    - Steam → Library → Stellaris → правый клик → Properties → Local Files → **Verify integrity**
@@ -197,7 +197,7 @@
 1. Скачай **Opimizm.json** с https://mokhnatti.github.io/stellaris-mp-optimized/
 2. В Paradox Launcher → Playsets → **Import**
 3. Выбери скачанный файл
-4. Готово — 26 модов в правильном порядке
+4. Готово — 27 модов в правильном порядке
 
 ### Если делаешь вручную — порядок загрузки:
 
@@ -227,7 +227,8 @@
 22. zz_ Cetus MP Performance Patch
 23. zz_ Tasty Maid Static (no animation)
 24. zz_ RU Pack - Synkarion Crew
-25. ! Better Performance & Utilities  ← САМЫЙ ПОСЛЕДНИЙ (overrides 00_on_actions.txt)
+25. ! Better Performance & Utilities
+26. zz_ Synkarion RU Pack v2  ← САМЫЙ ПОСЛЕДНИЙ (полный русификатор 6269 строк)
 ```
 
 **УДАЛЕНЫ из старой сборки** (4 мода):
@@ -249,7 +250,7 @@
 
 У тебя **должен быть точно такой же** `fd4d`. Если другой:
 - Проверь версию игры (должна быть 4.3.5)
-- Проверь что включены **все 26 модов** в правильном порядке
+- Проверь что включены **все 27 модов** в правильном порядке
 - Проверь набор DLC (должен совпадать с Рамилем)
 - Verify Stellaris через Steam → Properties → Local Files
 
@@ -451,7 +452,7 @@
 ## ИТОГО ПОДГОТОВКА (1 раз перед субботой)
 
 - [ ] BIOS XMP включён
-- [ ] Steam коллекция подписана (26 модов)
+- [ ] Steam коллекция подписана (27 модов)
 - [ ] Tailscale установлен и подключён (опционально)
 - [ ] Win 10: Game Mode OFF, Power Plan = High Performance, Defender exclusion, OneDrive не синкает
 - [ ] Steam Launch Options: `-nolauncher -nakama -randomlog -randomlog_stack=5 -randomlog_frames=3` (хост) или `-nolauncher -nakama` (клиенты)
@@ -460,7 +461,7 @@
 - [ ] Discord overlay для Stellaris OFF
 - [ ] NVIDIA/AMD: Maximum Performance для stellaris.exe
 - [ ] settings.txt: vsync=no, autosave=4
-- [ ] Playset «Opimizm» импортирован из JSON (https://mokhnatti.github.io/stellaris-mp-optimized/), 26 модов, checksum в игре сверен
+- [ ] Playset «Opimizm» импортирован из JSON (https://mokhnatti.github.io/stellaris-mp-optimized/), 27 модов, checksum в игре сверен
 - [ ] House Rules прочитаны всеми 5 игроками
 - [ ] BPU/Modmenu настройки применены хостом ДО первого сейва
 - [ ] Тестовый запуск прошёл без ошибок
