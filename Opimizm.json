@@ -75,99 +75,87 @@
       "steamId": "1886769279"
     },
     {
-      "displayName": "Designable Starbases",
-      "enabled": true,
-      "position": 12,
-      "steamId": "3125931110"
-    },
-    {
       "displayName": "Gray  with animated portrait",
       "enabled": true,
-      "position": 13,
+      "position": 12,
       "steamId": "2976454692"
     },
     {
       "displayName": "Tasty Maid: Portraits 美味女仆：肖像",
       "enabled": true,
-      "position": 14,
+      "position": 13,
       "steamId": "2976527288"
     },
     {
       "displayName": "No Shipyard Juggernauts",
       "enabled": true,
-      "position": 15,
+      "position": 14,
       "steamId": "3020891645"
     },
     {
       "displayName": "AI will not summon dimensional fleet",
       "enabled": true,
-      "position": 16,
+      "position": 15,
       "steamId": "3238485438"
     },
     {
       "displayName": "~ StarNet AI",
       "enabled": true,
-      "position": 17,
+      "position": 16,
       "steamId": "1712760331"
     },
     {
       "displayName": "Spacefleet Tactica",
       "enabled": true,
-      "position": 18,
+      "position": 17,
       "steamId": "3696204283"
     },
     {
       "displayName": "SFT ADD-ON : Marine Frigates for all AI Empires",
       "enabled": true,
-      "position": 19,
+      "position": 18,
       "steamId": "3717059342"
     },
     {
       "displayName": "SFT ADD-ON : Specialist Frigates",
       "enabled": true,
-      "position": 20,
+      "position": 19,
       "steamId": "3712101233"
     },
     {
       "displayName": "Ultimate Automation",
       "enabled": true,
-      "position": 21,
+      "position": 20,
       "steamId": "2250100617"
     },
     {
       "displayName": "Tasty Maid: Portraits (Русификатор)",
       "enabled": true,
-      "position": 22,
+      "position": 21,
       "steamId": "2978054302"
     },
     {
       "displayName": "zz_ Cetus MP Performance Patch",
       "enabled": true,
-      "position": 23,
+      "position": 22,
       "steamId": "3719960181"
     },
     {
       "displayName": "zz_ Tasty Maid Static (no animation)",
       "enabled": true,
-      "position": 24,
+      "position": 23,
       "steamId": "3719959908"
     },
     {
       "displayName": "! Better Performance & Utilities",
       "enabled": true,
-      "position": 25,
+      "position": 24,
       "steamId": "2475302050"
-    },
-    {
-      "displayName": "zz_ Designable Starbases - 4.3 Compatibility Patch",
-      "enabled": true,
-      "position": 26,
-      "steamId": "3728470414"
     },
     {
       "displayName": "zz_ Synkarion RU Pack v2",
       "enabled": true,
-      "position": 27,
+      "position": 25,
       "steamId": "3723731935"
     }
   ]
