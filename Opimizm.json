@@ -69,16 +69,16 @@
       "steamId": "2296011997"
     },
     {
-      "displayName": "Designable Starbases",
-      "enabled": true,
-      "position": 11,
-      "steamId": "3125931110"
-    },
-    {
       "displayName": "Starbase Strong",
       "enabled": true,
-      "position": 12,
+      "position": 11,
       "steamId": "1886769279"
+    },
+    {
+      "displayName": "Designable Starbases",
+      "enabled": true,
+      "position": 12,
+      "steamId": "3125931110"
     },
     {
       "displayName": "Gray  with animated portrait",
